@@ -1,9 +1,9 @@
 = Article API
 
- This API was built for managing the article application.
- Therefore two main resources are existing articles and authors.
+ This API was built to manage an article application.
+ Therefore two main resources exists, articles and authors.
  API was documented by swagger. After running the application please see the documentation page at http://localhost:8080/swagger-ui.html
- and look the curl samples sections to see example curl request for search API.
+ and look at curl samples sections to see example curl request for search API.
 
 * How to run:
 ** Run with Docker [Recommended]:
@@ -17,7 +17,7 @@
 - Maven
 - Postgresql
 
-*** The application has a database dependency so that you need to run PostgreSQL server and set the environment variables with yours.
+*** The application has a database dependency so that you need to run PostgreSQL server and set the environment variables with yourself.
 ....
 DATA_SOURCE_URL : jdbc:postgresql://localhost:5442/postgres
 DB_USER : upday
