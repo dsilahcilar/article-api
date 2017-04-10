@@ -8,12 +8,14 @@ import com.example.service.ArticleCommand;
 import com.example.service.ArticleQuery;
 import com.example.service.AuthorService;
 import com.example.service.SearchService;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Configuration
 @EnableJpaAuditing
+@EnableCaching
 public class ApplicationConfiguration {
 
     @Bean

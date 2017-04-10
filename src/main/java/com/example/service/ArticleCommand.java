@@ -8,6 +8,8 @@ import com.example.persistence.entity.ArticleEntity;
 import com.example.persistence.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 @Slf4j
@@ -21,6 +23,7 @@ public class ArticleCommand {
         articleRepository.save(articleEntity);
     }
 
+    @CacheEvict("article")
     public void delete(Long id) {
         try {
             articleRepository.delete(id);
@@ -29,6 +32,7 @@ public class ArticleCommand {
         }
     }
 
+    @CacheEvict(value = "article", key = "#id")
     public void update(Long id, Article article) {
         ArticleEntity foundedArticle = articleRepository.findOne(id);
         if (foundedArticle == null) {

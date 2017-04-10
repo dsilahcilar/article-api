@@ -8,6 +8,7 @@ import com.example.persistence.entity.ArticleEntity;
 import com.example.persistence.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -20,6 +21,7 @@ public class ArticleQuery {
     private final ArticleRepository articleRepository;
     private final ArticleConverter converter;
 
+    @Cacheable("article")
     public Article article(Long id) {
         ArticleEntity articleEntity = articleRepository.findOne(id);
         return converter.toModel(articleEntity);
