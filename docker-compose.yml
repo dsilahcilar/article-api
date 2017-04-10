@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  bet-scheduler:
+    image: upday:1.0
+    container_name: upday-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - upday-postgres
+    logging:
+      driver: json-file
+      options:
+        max-size: 512k
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090/health"]
+
+  upday-postgres:
+    image: postgres:9.5.4
+    container_name: upday-postgres
+    ports:
+      - "5442:5432"
+    environment:
+      - POSTGRES_USER=upday
+      - POSTGRES_PASSWORD=updaypwd
+    restart: always

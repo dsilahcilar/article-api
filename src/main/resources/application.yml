@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATA_SOURCE_URL:jdbc:postgresql://localhost:5442/postgres}
+    username: ${DB_USER:upday}
+    password: ${DB_PASSWORD:updaypwd}
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+spring.jackson.serialization.write_dates_as_timestamps: false

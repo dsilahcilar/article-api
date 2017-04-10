@@ -1,0 +1,72 @@
+= Article API
+
+ This API was built for managing the article application.
+ Therefore two main resources are existing articles and authors.
+ API was documented by swagger. After running the application please see the documentation page at http://localhost:8080/swagger-ui.html
+ and look the curl samples sections to see example curl request for search API.
+
+* How to run:
+** Run with Docker [Recommended]:
+....
+ docker-compose up
+....
+
+** Run with Java:
+*** Requirements:
+- Jdk-8
+- Maven
+- Postgresql
+
+*** The application has a database dependency so that you need to run PostgreSQL server and set the environment variables with yours.
+....
+DATA_SOURCE_URL : jdbc:postgresql://localhost:5442/postgres
+DB_USER : upday
+DB_PASSWORD : updaypwd
+....
+**** Build
+....
+mvn clean install
+java -jar target/*.jar
+or
+mvn spring-boot:run
+....
+
+
+* Sample Curl Requests
+** Search by author name
+....
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+   "author": { \
+     "name": "martin" \
+   } \
+ }' 'http://localhost:8080/search/articles?page=0&size=20'
+....
+
+** Search by autor name and lastName
+....
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+   "author": { \
+     "name": "martin", \
+     "lastName": "fowler" \
+   } \
+ }' 'http://localhost:8080/search/articles?page=0&size=20'
+....
+
+** Search by publishDate
+....
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+   "publishDate": { \
+     "gte": "2014-04-10T10:07:59.254Z", \
+     "lte": "2019-04-10T10:07:59.254Z" \
+   } \
+ }' 'http://localhost:8080/search/articles?page=0&size=20'
+....
+
+
+** Search by keywords
+....
+curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{ \
+  \
+   "keywords": ["first", "tdd"] \
+ }' 'http://localhost:8080/search/articles?page=0&size=20'
+....

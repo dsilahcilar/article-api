@@ -9,4 +9,5 @@ public class UpdayApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(UpdayApplication.class, args);
 	}
+
 }
