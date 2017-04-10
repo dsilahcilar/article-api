@@ -8,6 +8,7 @@
 * How to run:
 ** Run with Docker [Recommended]:
 ....
+ docker build -t upday:1.0 .
  docker-compose up
 ....
 
